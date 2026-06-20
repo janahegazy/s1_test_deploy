@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 from huggingface_hub import InferenceClient
 
-load_dotenv(dotenv_path=Path(__file__).parent / ".env")
+load_dotenv()
 
 st.title('My first app') 
 name=st.text_input("Enter your name", "Type Here ...")
