@@ -11,8 +11,9 @@ if name:
     st.write('Hello, ', name, '!')
     
 input_text=st.text_input("Enter your text", "Type Here ...")
-client=InferenceClient(
-    provider="auto",api_key=os.environ.get("HUGGINGFACEHUB_API_TOKEN")
+client = InferenceClient(
+    provider="hf-inference",
+    api_key=os.environ.get("HF_TOKEN")
 )
 
 if input_text:
@@ -22,3 +23,11 @@ if input_text:
 )
 st.write(output)
 print(os.environ.get("HUGGINGFACEHUB_API_TOKEN"))
+
+if input_text and input_text != "Type Here ...":
+    output = client.text_classification(
+        model="distilbert/distilbert-base-uncased-finetuned-sst-2-english",
+        text=input_text
+    )
+    st.write(output)
+
