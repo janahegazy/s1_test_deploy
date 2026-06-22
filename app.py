@@ -18,15 +18,15 @@ client = InferenceClient(
 
 if input_text:
    output = client.text_classification(
-    model="distilbert-base-uncased-finetuned-sst-2-english",
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest",
     text=input_text
 )
 st.write(output)
-print(os.environ.get("HUGGINGFACEHUB_API_TOKEN"))
+print(os.environ.get("HF_TOKEN"))
 
 if input_text and input_text != "Type Here ...":
     output = client.text_classification(
-        model="distilbert/distilbert-base-uncased-finetuned-sst-2-english",
+        model="cardiffnlp/twitter-roberta-base-sentiment-latest",
         text=input_text
     )
     st.write(output)
